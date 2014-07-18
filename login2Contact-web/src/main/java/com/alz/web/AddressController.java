@@ -24,9 +24,13 @@ import javax.servlet.annotation.HttpConstraint;
  *
  * @author ryanki1
  */
+
+
+
+
 @WebServlet(name = "AddressController", urlPatterns={"/contact"})
 @ServletSecurity(
-        @HttpConstraint(transportGuarantee = TransportGuarantee.CONFIDENTIAL, rolesAllowed = {"Admin"})
+        @HttpConstraint( rolesAllowed = {"AdminRole"})
 )
 public class AddressController extends HttpServlet {
 
