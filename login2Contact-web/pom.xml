@@ -107,12 +107,12 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <webResources>
                         <resource>
-                            <directory></directory>
-                            <excludes>
-                                <exclude>
-                                    **/node_modules
-                                </exclude>
-                            </excludes>
+                            <filtering>true</filtering>
+                            <targetPath>/dist</targetPath>  
+                            <directory>webSnapshot/dist</directory>                          
+                            <includes>                                
+                                <include>**/*</include>
+                            </includes>
                         </resource>
                     </webResources>
                 </configuration>
