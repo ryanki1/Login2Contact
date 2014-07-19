@@ -72,25 +72,25 @@ public class AddressController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Address addressA = new Address();
-        addressA.setAddress1("Herrenstrasse 48");
-        addressA.setCity("Freiburg");
-        addressA.setPostcode("79098");
-
-        Address addressB = new Address();
-        addressB.setAddress1("Schlossbergring 1");
-        addressB.setCity("Freiburg");
-        addressB.setPostcode("79098");
-        
-        Address addressC = new Address();
-        addressC.setAddress1("Karlstrasse 16");
-        addressC.setCity("Freiburg");
-        addressC.setPostcode("79098");
-        
-        response.getWriter().printf("Hello %s", "Kieran");
+//        Address addressA = new Address();
+//        addressA.setAddress1("Herrenstrasse 48");
+//        addressA.setCity("Freiburg");
+//        addressA.setPostcode("79098");
+//
+//        Address addressB = new Address();
+//        addressB.setAddress1("Schlossbergring 1");
+//        addressB.setCity("Freiburg");
+//        addressB.setPostcode("79098");
+//        
+//        Address addressC = new Address();
+//        addressC.setAddress1("Karlstrasse 16");
+//        addressC.setCity("Freiburg");
+//        addressC.setPostcode("79098");
+//        
+//        response.getWriter().printf("Hello %s", "Kieran");
        
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/contact.html");
-        request.setAttribute("address", addressA);
+//        request.setAttribute("address", addressA);
         dispatcher.forward(request, response);
                 
     }

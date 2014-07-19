@@ -1,1 +1,5 @@
-/login2Contact-web/target/
+node_modules
+dist
+.tmp
+.sass-cache
+app/bower_components
