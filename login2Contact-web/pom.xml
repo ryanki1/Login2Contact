@@ -108,7 +108,7 @@
                     <webResources>
                         <resource>
                             <filtering>true</filtering>
-                            <targetPath>/dist</targetPath>  
+                            <targetPath>/faces</targetPath>  
                             <directory>webSnapshot/dist</directory>                          
                             <includes>                                
                                 <include>**/*</include>
