@@ -29,7 +29,7 @@
             <id>PrimeFaces-maven-lib</id>
             <layout>default</layout>
             <name>Repository for library PrimeFaces-maven-lib</name>
-        </repository>
+        </repository> 
     </repositories> 
 
     <properties>
@@ -106,13 +106,33 @@
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <webResources>
-                        <resource>
+<!--                        <resource> Browser IDE responsible
                             <filtering>true</filtering>
                             <targetPath>/faces</targetPath>  
                             <directory>webSnapshot/dist</directory>                          
                             <includes>                                
+                                <include>index.xhtml</include>
+                            </includes>
+                        </resource>
+                        <resource> Browser IDE responsible
+                            <filtering>true</filtering>
+                            <targetPath>/contact</targetPath>  
+                            <directory>webSnapshot/dist</directory>                          
+                            <includes>                        
+                                 remember: angular widgets run best in html 
+                                <include>index.html</include> 
+                            </includes>
+                        </resource>-->
+                        <resource>
+                            <filtering>true</filtering>
+                            <targetPath>/</targetPath>  
+                            <directory>webSnapshot/dist</directory>                          
+                            <includes>                                
                                 <include>**/*</include>
                             </includes>
+                            <excludes>
+                                <exclude>index.html</exclude>
+                            </excludes>
                         </resource>
                     </webResources>
                 </configuration>

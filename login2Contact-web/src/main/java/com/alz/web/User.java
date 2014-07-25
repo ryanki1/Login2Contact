@@ -12,6 +12,15 @@ package com.alz.web;
  */
 public class User {
     
+    private String loggedOnUserName;
+
+    public String getLoggedOnUserName() {
+        return loggedOnUserName;
+    }
+
+    public void setLoggedOnUserName(String loggedOnUserName) {
+        this.loggedOnUserName = loggedOnUserName;
+    }
     private String firstName;
     public String getFirstName(){
         return firstName;

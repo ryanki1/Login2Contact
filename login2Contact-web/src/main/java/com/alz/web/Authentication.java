@@ -8,31 +8,19 @@ package com.alz.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.annotation.Retention;
-import javax.inject.Scope;
-import javax.servlet.RequestDispatcher;
+import java.security.Principal;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.annotation.ServletSecurity;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.annotation.ServletSecurity.TransportGuarantee;
-import javax.servlet.annotation.HttpConstraint;
 
 /**
  *
  * @author ryanki1
  */
-
-
-
-
-@WebServlet(name = "AddressController", urlPatterns={"/contact/"})
-@ServletSecurity(
-        @HttpConstraint( rolesAllowed = {"AdminRole"})
-)
-public class AddressController extends HttpServlet {
+@WebServlet(name = "Authentication", urlPatterns = {"/current-user"})
+public class Authentication extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,10 +39,10 @@ public class AddressController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddressController</title>");            
+            out.println("<title>Servlet Authentication</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddressController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Authentication at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -69,30 +57,18 @@ public class AddressController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-//        Address addressA = new Address();
-//        addressA.setAddress1("Herrenstrasse 48");
-//        addressA.setCity("Freiburg");
-//        addressA.setPostcode("79098");
-//
-//        Address addressB = new Address();
-//        addressB.setAddress1("Schlossbergring 1");
-//        addressB.setCity("Freiburg");
-//        addressB.setPostcode("79098");
-//        
-//        Address addressC = new Address();
-//        addressC.setAddress1("Karlstrasse 16");
-//        addressC.setCity("Freiburg");
-//        addressC.setPostcode("79098");
-//        
-//        response.getWriter().printf("Hello %s", "Kieran");
-       
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/contact/contact.html");
-//        request.setAttribute("address", addressA);
-        dispatcher.forward(request, response);
-                
+        response.setContentType("application/json");
+        PrintWriter writer = response.getWriter();        
+        Principal loggedOnUser = request.getUserPrincipal();
+        String userName = (loggedOnUser != null) ? loggedOnUser.getName() : "";
+        User user = new User();
+        user.setLoggedOnUserName(userName);
+        String json = String.format("{\"user\": \"%s\"}", userName);
+        writer.println(json);
+        writer.flush();
     }
 
     /**
@@ -103,6 +79,7 @@ public class AddressController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -113,6 +90,7 @@ public class AddressController extends HttpServlet {
      *
      * @return a String containing servlet description
      */
+    @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>

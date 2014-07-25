@@ -2,4 +2,5 @@ com\alz\web\AddressController.class
 com\alz\web\LoginUserController.class
 com\alz\web\User.class
 com\alz\web\LoginAdminController.class
+com\alz\web\Authentication.class
 com\alz\web\Address.class
